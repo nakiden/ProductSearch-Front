@@ -1,0 +1,1 @@
+http://www.geoplugin.net/extras/location.gp?lat=54.453405800000006&long=17.0441237&format=json

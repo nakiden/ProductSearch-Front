@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+</head>
+
+<body>
+<div id="wrap">
+    <h2>Results</h2>
+    <table class="simple-little-table" border = "1px solid black">
+        <th  class="green"><a href="" >Name </a> </th>
+        <th  class="green"><a href="" >Publisher</a></th>
+        <th  class="green"><a href="" >Description</a></th>
+       <!-- <th  class="green"><a href="" >Price</a> </th>-->
+        <th  class="green"><a href="" >Barcode</a> </th>
+        <th  class="green"><a href="" >Store</a> </th>
+        <tr>
+            <td class="grey">{{products.title}}</td>
+            <td class="grey">{{products.publisher}}</td>
+            <td class="grey">{{products.brand}}</td>
+        <!--    <td class="grey">{{products.price | currency}}</td> -->
+            <td class="grey">{{products.barcode}}</td>
+            <td class="grey">
+                <ul>
+                    <li ng-repeat="key in arr">{{"Store name: " + key.name }}<br>{{"Latitude: " + key.latitude }} <br>{{"Longitude: " + key.longitude }}<br>{{"Price: "}} {{key.productPrice | currency}}</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <p align="center"><input class="btn btn-success btn-sm" type="submit" ng-click="editData()" value="Add store to this barcode" /></p> 
+</div>
+</body>
+</html>

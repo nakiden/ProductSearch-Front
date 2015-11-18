@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>HTML5 Geolocation API - Google Maps</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="http://maps.google.com/maps/api/js?sensor=false">
+</script>
+<script type="text/javascript">
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position){
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        document.getElementById("latitude").innerHTML = latitude;
+        document.getElementById("longitude").innerHTML = longitude;
+        var coords = new google.maps.LatLng(latitude, longitude);
+        var mapOptions = {
+            zoom: 15,
+            center: coords,
+            mapTypeControl: true,
+            navigationControlOptions: {
+                style: google.maps.NavigationControlStyle.SMALL
+            },
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(
+                document.getElementById("mapContainer"), mapOptions
+                );
+            var marker = new google.maps.Marker({
+                    position: coords,
+                    map: map,
+                    title: "Your current location!"
+            });
+ 
+        });
+    }else {
+        document.getElementById("geolocation").innerHTML = "Geolocation API не поддерживается в вашем браузере";
+    }
+</script>
+
+<link href='http://fonts.googleapis.com/css?family=Vollkorn:700italic,400' rel='stylesheet' type='text/css'>
+
+<link href='css/maps-style.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<div id="wrap">
+<h2>Your geolocation</h2>
+<div id="mapContainer"></div>
+<p id="geolocation"> Latitude: <span id="latitude"></span> Longitude: <span id="longitude"></span></p>
+</div>
+</body>
+</html>
