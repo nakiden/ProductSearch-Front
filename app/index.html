@@ -10,46 +10,47 @@
     <link href="css/style.css" rel="stylesheet">
     <script src="bower_components/angular/angular.js"></script>
     <script src="js/controllers.js"></script>
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/qrcodelib.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
-    <script type="text/javascript" src="js/webcodecamjquery.js"></script>
+    <script type="text/javascript" src="bower_components/js/jquery.js"></script>
+    <script type="text/javascript" src="bower_components/js/qrcodelib.js"></script>
+    <script type="text/javascript" src="bower_components/js/script.js"></script>
+    <script type="text/javascript" src="bower_components/js/webcodecamjquery.js"></script>
     <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript" src="bower_components\angularjs-geolocation\src\geolocation.js"></script>
 </head>
 <body ng-controller="productListController">
-    
-    <div id="differentView" ng-switch="expression">
-        <div ng-switch-when="WebCam">
-           <div ng-include="'barcodeReader.html'"></div>
-        </div>
+    <div ng-controller="DomController">
+		<div id="differentView" ng-switch="expression">
+			<div ng-switch-when="WebCam">
+			   <div ng-include="'barcodeReader.html'"></div>
+			</div>
 
-        <div id="wrap" ng-switch-when="Result">
-            <div ng-if="isResponseNull">
-                <div ng-if="!isEdit">
-                    <h2 id="problem">Soryy but there is no data, you can Add data below</h2>
-                </div>
-                <div ng-if="isEdit">
-                    <h2 id="problem">Enter data below</h2>
-                </div>
-                <div ng-include="'addForm.html'"></div>
-                <div ng-if="useGeo">
-                        <h2>Your geolocation</h2>
-                        <div id="mapContainer"></div>
-                        <p id="geolocation"> Latitude: <span id="latitude"></span> Longitude: <span id="longitude"></span></p>
-                </div>
-            </div>
-            <div ng-if="!isResponseNull">
-               
-               <div ng-include="'resultTable.html'"></div>
+			<div id="wrap" ng-switch-when="Result">
+				<div ng-if="isResponseNull">
+					<div ng-if="!isEdit">
+						<h2 id="problem">Soryy but there is no data, you can Add data below</h2>
+					</div>
+					<div ng-if="isEdit">
+						<h2 id="problem">Enter data below</h2>
+					</div>
+					<div ng-include="'addForm.html'"></div>
+					<div ng-if="useGeo">
+							<h2>Your geolocation</h2>
+							<div id="mapContainer"></div>
+							<p id="geolocation"> Latitude: <span id="latitude"></span> Longitude: <span id="longitude"></span></p>
+					</div>
+				</div>
+				<div ng-if="!isResponseNull">
+				   
+				   <div ng-include="'resultTable.html'"></div>
 
-            </div>
-            <p align="center"><input  class="btn btn-success btn-sm"  type="button" ng-click="setView()" value="Go to the search page"></p>
-        </div>
+				</div>
+				<p align="center"><input  class="btn btn-success btn-sm"  type="button" ng-click="setView()" value="Go to the search page"></p>
+			</div>
 
-        <div ng-switch-default>
-        </div>
-    </div>
+			<div ng-switch-default>
+			</div>
+		</div>
+	</div>
 
 
  </body>
